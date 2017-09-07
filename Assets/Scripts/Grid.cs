@@ -136,7 +136,6 @@ public class Grid : MonoBehaviour
                 }
             }
         }
-
     }
 
     public List<Node> GetNeighbours(Node node)
@@ -179,10 +178,8 @@ public class Grid : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-        if (grid != null && displayGridGizmos)
-        {
-            foreach (Node n in grid)
-            {
+        if (grid != null && displayGridGizmos){
+            foreach (Node n in grid){
 
                 Gizmos.color = Color.Lerp(Color.white, Color.black, Mathf.InverseLerp(penaltyMin, penaltyMax, n.movementPenalty));
                 Gizmos.color = (n.walkable) ? Gizmos.color : Color.red;
@@ -192,11 +189,8 @@ public class Grid : MonoBehaviour
     }
 
     [System.Serializable]
-    public class TerrainType
-    {
+    public class TerrainType{
         public LayerMask terrainMask;
         public int terrainPenalty;
     }
-
-
 }

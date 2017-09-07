@@ -478,8 +478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2013556777}
-  speed: 20
+  speed: 40
+  turnSpeed: 3
   turnDistance: 5
+  stoppingDistance: 30
 --- !u!1001 &501787925
 Prefab:
   m_ObjectHideFlags: 0
