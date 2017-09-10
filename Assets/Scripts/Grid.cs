@@ -11,6 +11,7 @@ public class Grid : MonoBehaviour
     public float nodeRadius;
     public TerrainType[] walkableRegions;
     public int obstacleProximityPenalty = 10;
+    
     Dictionary<int, int> walkableRegionsDictionary = new Dictionary<int, int>();
     LayerMask walkableMask;
 
@@ -71,7 +72,6 @@ public class Grid : MonoBehaviour
                 {
                     movementPenalty += obstacleProximityPenalty;
                 }
-
 
                 grid[x, y] = new Node(walkable, worldPoint, x, y, movementPenalty);
             }

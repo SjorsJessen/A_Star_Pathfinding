@@ -33,16 +33,17 @@ public class Unit : MonoBehaviour {
         if(Time.timeSinceLevelLoad < .3f){
             yield return new WaitForSeconds(.3f);
         }
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        
+        PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
 
         float squareMoveTreshold = pathUpdateMoveTreshold * pathUpdateMoveTreshold;
         Vector3 targetPosOld = target.position;
 
-    while(true){
+        while(true){
             yield return new WaitForSeconds(minPathUpdateTime);
             if ((target.position - targetPosOld).sqrMagnitude > squareMoveTreshold) 
             {
-                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+                PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
                 targetPosOld = target.position;
             }
         }
@@ -81,7 +82,6 @@ public class Unit : MonoBehaviour {
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * speedPercent, Space.Self);
             }
-
             yield return null;
         }
     }
